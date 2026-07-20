@@ -1,0 +1,53 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.healthex.io/authentication
+docs: https://docs.healthex.io/authentication
+summary:
+  types: [http, oauth2]
+  http_scheme: bearer
+  bearer_format: JWT
+  oauth2_flows: [authorizationCode]
+  models:
+    - organization-api-token
+    - patient-oauth2
+schemes:
+  - name: organizationBearerJWT
+    type: http
+    scheme: bearer
+    bearerFormat: JWT
+    description: >-
+      Organization API access. Admins mint an apiKey / apiSecret pair in the
+      HealthEx web-app Admin panel, then exchange them at the token endpoint for
+      a JWT that is sent as `Authorization: Bearer <JWT>`. Tokens are valid for
+      24 hours. HealthEx notes that none of the currently supported organization
+      APIs require additional permissions/scopes.
+    token_endpoint: https://api.healthex.io/v1/auth/token
+    token_request:
+      method: POST
+      content_type: application/json
+      body: '{"apiKey": "...", "apiSecret": "..."}'
+    token_lifetime_hours: 24
+    sources: [docs.healthex.io/authentication]
+  - name: patientOAuth2
+    type: oauth2
+    description: >-
+      Patient-mediated OAuth 2.0 (SMART-on-FHIR style) for accessing an
+      individual patient's consented FHIR records and the MCP server. PKCE
+      (S256) required; public (none) and client_secret_post client auth
+      supported.
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://api.healthex.io/oauth/authorize
+        tokenUrl: https://api.healthex.io/oauth/token
+        registrationUrl: https://api.healthex.io/oauth/register
+        revocationUrl: https://api.healthex.io/oauth/revoke
+        pkce: S256
+        scopes:
+          patient/*.read: Read access to the patient's consented FHIR records
+          offline_access: Issue a refresh token for long-lived access
+          openid: OpenID Connect authentication
+          profile: Basic profile claims
+          email: Email claim
+    sources:
+      - api.healthex.io/.well-known/oauth-authorization-server
+      - api.healthex.io/.well-known/oauth-protected-resource
