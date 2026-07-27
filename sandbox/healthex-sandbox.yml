@@ -1,0 +1,29 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.healthex.io/test-patients/
+docs:
+  - https://docs.healthex.io/test-patients/
+  - https://docs.healthex.io/sample-patients/
+model: test-patient-accounts
+description: >-
+  HealthEx does not use a separate test-vs-live key prefix. Instead it exposes
+  organization-scoped test patients: real patient accounts flagged
+  isTestPatient=true that exercise the full production API and MCP flows against
+  synthetic health data.
+creation:
+  operation: POST /api/create-a-test-patient
+  returns:
+    email_pattern: 'test-patient+[random]@[org-domain]'
+    example_email: 'test-patient+dqKVeMid8N41@example.com'
+    example_password: 'zkWZTH$$BmfTAOW4'
+    auto_generated_credentials: true
+characteristics:
+  - Flagged isTestPatient=true; organization-scoped
+  - Full CRUD, consent management, and project assignment
+  - Document upload up to 100 MB
+  - MCP tool access without the standard patient OAuth workflow
+  - Do not affect real patient data
+notes: >-
+  Credentials above are the documentation's illustrative examples, not shared
+  live secrets. Authentication endpoints and API workflows are identical between
+  test patients and production.

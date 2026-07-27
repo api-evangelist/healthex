@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: searched
+source: https://api.healthex.io/.well-known/oauth-authorization-server
+docs: https://docs.healthex.io/authentication
+schemes:
+  - name: patientOAuth2
+    source: https://api.healthex.io/.well-known/oauth-authorization-server
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://api.healthex.io/oauth/authorize
+        tokenUrl: https://api.healthex.io/oauth/token
+        pkce: S256
+scopes:
+  - scope: patient/*.read
+    description: >-
+      SMART-on-FHIR wildcard read scope granting read access to all FHIR
+      resource types for a patient who has consented to share their record.
+    flows: [authorizationCode]
+    sources: [oauth-authorization-server, oauth-protected-resource]
+  - scope: offline_access
+    description: Issue a refresh token for long-lived, offline access.
+    flows: [authorizationCode]
+    sources: [oauth-authorization-server]
+  - scope: openid
+    description: OpenID Connect authentication.
+    flows: [authorizationCode]
+    sources: [oauth-authorization-server]
+  - scope: profile
+    description: Basic profile claims.
+    flows: [authorizationCode]
+    sources: [oauth-authorization-server]
+  - scope: email
+    description: Email address claim.
+    flows: [authorizationCode]
+    sources: [oauth-authorization-server]
+notes: >-
+  Patient data access is scope-gated via SMART-on-FHIR patient/*.read. The
+  organization-level API (JWT from apiKey/apiSecret) is not scoped — HealthEx
+  states none of the currently supported organization APIs require additional
+  permissions.

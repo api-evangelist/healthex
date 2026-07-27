@@ -1,0 +1,19 @@
+generated: '2026-07-19'
+method: searched
+probe: false
+url: https://trustcenter.healthex.io/
+platform: Vanta
+certifications: [HIPAA, TEFCA]
+evidence:
+  - source: https://trustcenter.healthex.io/
+    kind: trust-center
+    detail: Vanta-hosted trust center (data-environment=prod)
+  - source: https://www.healthex.io/
+    kind: company-site
+    detail: >-
+      Complies with HIPAA privacy rules; operates as an Information Access
+      Services (IAS) Provider on the TEFCA network.
+notes: >-
+  Trust center is a Vanta SPA; named certification documents (e.g. SOC 2) are
+  gated behind the Vanta portal and were not enumerable from the public shell,
+  so only publicly-stated frameworks (HIPAA, TEFCA) are recorded here.

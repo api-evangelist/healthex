@@ -1,0 +1,48 @@
+generated: '2026-07-19'
+method: searched
+status: published
+source: https://docs.healthex.io/mcp-server/mcp-tools
+server:
+  name: healthex
+  transport: http
+  protocol: json-rpc-2.0
+  url: https://api.healthex.io/mcp
+  auth: Bearer token (patient OAuth2 access token; test patients exempt)
+  description: >-
+    Hosted Model Context Protocol server exposing a consented patient's
+    FHIR-based health record to AI agents through standardized tools, with
+    per-patient data isolation and natural-language search. Also reachable at
+    https://mcp.healthex.io/.
+tools:
+  - name: get_health_summary
+    description: Retrieve a comprehensive current health snapshot including age, date of birth, gender, active medical conditions, current medications.
+  - name: get_conditions
+    description: Retrieve all medical conditions with start dates and end dates (for resolved, treated, or inactive conditions).
+  - name: get_medications
+    description: Access detailed medication information including complete dosing instructions, prescribing provider, indication, start date.
+  - name: get_allergies
+    description: Retrieve patient allergy and intolerance information including allergen name, clinical status, verification status.
+  - name: get_labs
+    description: Access laboratory test results including test name, value with units, reference range, date performed, ordering provider.
+  - name: get_vitals
+    description: Access vital sign measurements including blood pressure, heart rate, body temperature, respiratory rate, oxygen saturation.
+  - name: get_procedures
+    description: Retrieve medical procedures including surgeries, diagnostic procedures, biopsies, and interventions.
+  - name: get_immunizations
+    description: Access complete vaccination history including vaccine name, date administered, dose number, series completion status.
+  - name: get_visits
+    description: Retrieve complete clinical visit history including visit date, visit type, provider name, location, chief complaint.
+  - name: get_notes_by_visit
+    description: Retrieve clinical notes for a specific visit using encounter ID.
+    deprecated: true
+  - name: search_clinical_notes
+    description: Search across all clinical notes for specific keywords or phrases, or retrieve notes by encounter ID.
+  - name: search
+    description: Semantically search across all patient health record categories using natural language queries.
+  - name: update_records
+    description: Requests a background refresh of health records from connected locations.
+  - name: check_records_status
+    description: Returns the current sync status of health records (read-only, no refresh triggered).
+  - name: update_and_check_recent_records
+    description: Legacy tool for checking recency without starting a refresh.
+    deprecated: true

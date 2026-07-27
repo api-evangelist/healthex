@@ -1,8 +1,15 @@
 aid: healthex
 name: HealthEx
-description: 'HealthEx is a company surfaced as a portfolio company of electric-capital, general-catalyst
-  and added to the API Evangelist network as a stub for enrichment. Sector: healthcare. This profile is
-  a lead awaiting the enrichment pipeline.'
+description: >-
+  HealthEx is a patient-centric health-data-rights platform that securely unifies an
+  individual's medical records across places of care into one connected history, and lets
+  them share that record — under explicit, patient-initiated consent — with providers, apps,
+  and AI services. It operates as an Information Access Services (IAS) Provider on the TEFCA
+  network, complies with HIPAA privacy rules, and reaches records across more than 80% of U.S.
+  care providers. For developers HealthEx exposes a REST admin API (patient outreach, consent
+  checking and auditing, record-location search, usage), a FHIR R4 server ($everything,
+  USCDIv3), and a hosted Model Context Protocol server that gives AI agents governed,
+  consent-scoped access to a patient's health record.
 url: https://raw.githubusercontent.com/api-evangelist/healthex/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,18 +18,120 @@ x-backed-by:
 - general-catalyst
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://framerusercontent.com/assets/91Fl8WPMZvfgNsG45g8tmHf88w.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Healthcare
-apis: []
+- Health Records
+- FHIR
+- Patient Consent
+- Data Sharing
+- Interoperability
+- TEFCA
+- MCP
+- Agents
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: HealthEx API
+  description: >-
+    REST API for patient outreach, consent checking and auditing, record-location search,
+    test-patient creation, and usage reporting, plus a FHIR R4 server ($everything) for
+    standards-based access to a consented patient's medical record.
+  humanURL: https://docs.healthex.io/
+  baseURL: https://api.healthex.io
+  properties:
+  - type: Documentation
+    url: https://docs.healthex.io/
+  - type: APIReference
+    url: https://docs.healthex.io/api
+  - type: GettingStarted
+    url: https://docs.healthex.io/authentication
+  - type: Authentication
+    url: authentication/healthex-authentication.yml
+  - type: OAuthScopes
+    url: scopes/healthex-scopes.yml
+  - type: Sandbox
+    url: sandbox/healthex-sandbox.yml
+  - type: ChangeLog
+    url: changelog/healthex-changelog.yml
+  - type: MCPServer
+    url: mcp/healthex-mcp.yml
 common:
+- type: DomainSecurity
+  url: security/healthex-domain-security.yml
 - type: Website
   url: https://www.healthex.io/
+- type: DeveloperPortal
+  url: https://docs.healthex.io/
+- type: Documentation
+  url: https://docs.healthex.io/
+- type: APIReference
+  url: https://docs.healthex.io/api
+- type: GettingStarted
+  url: https://docs.healthex.io/authentication
+- type: Support
+  url: https://support.healthex.io/kb
+- type: SignUp
+  url: https://app.healthex.io/
+- type: Login
+  url: https://app.healthex.io/
+- type: StatusPage
+  url: https://status.healthex.io/
+- type: TrustCenter
+  url: https://trustcenter.healthex.io/
+- type: Compliance
+  url: https://trustcenter.healthex.io/
+- type: Authentication
+  url: authentication/healthex-authentication.yml
+- type: OAuthScopes
+  url: scopes/healthex-scopes.yml
+- type: WellKnown
+  url: well-known/healthex-well-known.yml
+- type: MCPServer
+  url: mcp/healthex-mcp.yml
+- type: LLMsTxt
+  url: llms/healthex-llms.txt
+- type: Conventions
+  url: conventions/healthex-conventions.yml
+- type: ErrorCatalog
+  url: errors/healthex-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/healthex-lifecycle.yml
+- type: StatusPage
+  url: lifecycle/healthex-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/healthex-lifecycle.yml
+- type: ChangeLog
+  url: changelog/healthex-changelog.yml
+- type: Sandbox
+  url: sandbox/healthex-sandbox.yml
+- type: Conformance
+  url: conformance/healthex-conformance.yml
+- type: DataModel
+  url: data-model/healthex-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

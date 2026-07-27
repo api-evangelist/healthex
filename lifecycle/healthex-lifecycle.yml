@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.healthex.io/changelog
+versioning:
+  scheme: numeric-changelog
+  current: '28'
+  docs: https://docs.healthex.io/changelog
+deprecation:
+  policy_url: https://docs.healthex.io/changelog
+  observed_via: changelog-supersession
+  notes: >-
+    HealthEx does not publish a formal RFC 8594 Sunset/Deprecation-header
+    policy, but the changelog documents supersession and marks tools deprecated.
+  deprecated:
+    - The Data retrieval status API is superseded by the Patient flow progress API (v28).
+    - MCP tool get_notes_by_visit is deprecated.
+    - MCP tool update_and_check_recent_records is a deprecated legacy tool.
+status_page: https://status.healthex.io/
+sla:
+  documented: false

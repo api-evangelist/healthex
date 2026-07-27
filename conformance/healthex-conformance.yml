@@ -1,0 +1,45 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.healthex.io/
+docs:
+  - https://docs.healthex.io/fhir-server/
+  - https://www.healthex.io/
+  - https://trustcenter.healthex.io/
+standards:
+  - id: fhir-r4
+    conforms: true
+    evidence: FHIR R4 server at https://api.healthex.io/FHIR/R4 with $everything; prioritizes USCDIv3 resources
+  - id: uscdi-v3
+    conforms: true
+    evidence: FHIR server prioritizes USCDIv3-mandated resources
+  - id: smart-on-fhir
+    conforms: true
+    evidence: OAuth authorization-server metadata advertises patient/*.read scope with PKCE
+  - id: oauth2
+    conforms: true
+    evidence: RFC 8414 authorization-server metadata; authorization_code + refresh_token grants
+  - id: oauth2-pkce
+    conforms: true
+    evidence: code_challenge_methods_supported includes S256
+  - id: oidc
+    conforms: partial
+    evidence: openid/profile/email scopes advertised, but no /.well-known/openid-configuration served
+  - id: rfc8414-oauth-metadata
+    conforms: true
+    evidence: /.well-known/oauth-authorization-server returns 200
+  - id: rfc9728-protected-resource-metadata
+    conforms: true
+    evidence: /.well-known/oauth-protected-resource returns 200
+  - id: tefca
+    conforms: true
+    evidence: HealthEx operates as an Information Access Services (IAS) Provider on the TEFCA network
+  - id: hipaa
+    conforms: true
+    evidence: Platform complies with HIPAA privacy rules (company site)
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use FHIR OperationOutcome, not application/problem+json
+compliance_program:
+  frameworks: [HIPAA, TEFCA]
+  trust_center: https://trustcenter.healthex.io/
+  trust_center_platform: Vanta

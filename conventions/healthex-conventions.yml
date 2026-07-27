@@ -1,0 +1,49 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.healthex.io/
+docs:
+  - https://docs.healthex.io/authentication
+  - https://docs.healthex.io/fhir-server/
+authentication:
+  style: bearer-jwt
+  models: [organization-api-token, patient-oauth2-smart-on-fhir]
+  header: 'Authorization: Bearer <token>'
+  ref: authentication/healthex-authentication.yml
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency-key header or contract is documented. Record-refresh calls
+    (update_records / $updateData) are modeled as background jobs whose status
+    is polled, not as idempotent writes.
+pagination:
+  style: fhir-bundle-link
+  params:
+    _count: Maximum number of bundle entries per page
+    _offset: Pagination offset
+  response: FHIR Bundle `link` elements carry next-page relations
+  ref: https://docs.healthex.io/fhir-server/
+incremental_sync:
+  param: _since
+  format: ISO 8601 timestamp
+  notes: Returns only records updated after the supplied timestamp for delta pulls.
+filtering:
+  param: _type
+  notes: Restrict $everything results to specific FHIR R4 resource types.
+data_format:
+  primary: FHIR R4 (application/fhir+json)
+  standards: [USCDIv3]
+versioning:
+  scheme: numeric-changelog
+  current: '28'
+  ref: changelog/healthex-changelog.yml
+error_envelope:
+  fhir: FHIR OperationOutcome for FHIR endpoints
+  http: 401 Unauthorized when the bearer token is missing, invalid, or expired
+  ref: errors/healthex-problem-types.yml
+consent_model:
+  notes: >-
+    All patient data access is gated by explicit patient consent; tokens only
+    grant access to patients who have consented to share with the organization.
+    Consent state is queryable (has-patient-consented-to-study, get-consent-record).
+rate_limiting:
+  documented: false

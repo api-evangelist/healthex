@@ -1,0 +1,1 @@
+{"resource":"https://api.healthex.io","authorization_servers":["https://api.healthex.io"],"scopes_supported":["patient/*.read"],"bearer_methods_supported":["header"]}

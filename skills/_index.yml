@@ -1,0 +1,16 @@
+generated: '2026-07-19'
+method: generated
+source: https://docs.healthex.io/
+skills:
+  - file: healthex-retrieve-patient-health-summary.md
+    name: Retrieve a patient's health summary via MCP
+    api: mcp/healthex-mcp.yml
+    operations: [get_health_summary, get_conditions, get_medications, get_labs, get_vitals, search]
+  - file: healthex-check-consent-and-fetch-fhir.md
+    name: Check consent then fetch the full FHIR record
+    api: authentication/healthex-authentication.yml
+    operations: [generate-token, has-patient-consented-to-study, get-consent-record, everything]
+  - file: healthex-add-patients-and-track-retrieval.md
+    name: Add patients to a study and track record retrieval
+    api: authentication/healthex-authentication.yml
+    operations: [generate-token, add-patients, get-patient-flow-progress, get-study-by-id, get-usage-summary]

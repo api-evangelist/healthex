@@ -1,0 +1,27 @@
+# HealthEx
+
+> HealthEx is a patient-centric health-data-rights platform that securely unifies a person's medical records across places of care into one connected history, and lets them share that record — under explicit, patient-initiated consent — with providers, apps, and AI services. It operates as an Information Access Services (IAS) Provider on the TEFCA network and is HIPAA-compliant, exposing a FHIR R4 API and a hosted MCP server for agents.
+
+## APIs
+- [HealthEx API](https://docs.healthex.io/): REST admin API for patient outreach, consent checking/auditing, record-location search, and usage. Base URL https://api.healthex.io.
+- [HealthEx FHIR R4 Server](https://docs.healthex.io/fhir-server/): Standards-based patient data access via $everything, base URL https://api.healthex.io/FHIR/R4 (USCDIv3-prioritized).
+- [HealthEx MCP Server](https://docs.healthex.io/mcp-server/): Hosted Model Context Protocol server (JSON-RPC 2.0) at https://api.healthex.io/mcp exposing 15 patient-health tools to AI agents.
+
+## Docs
+- [Documentation Overview](https://docs.healthex.io/)
+- [Authentication](https://docs.healthex.io/authentication): Organization JWT (apiKey/apiSecret -> Bearer) and patient OAuth 2.0 (SMART-on-FHIR, patient/*.read, PKCE).
+- [API Reference](https://docs.healthex.io/api)
+- [MCP Server Tools](https://docs.healthex.io/mcp-server/mcp-tools)
+- [Test Patients](https://docs.healthex.io/test-patients/)
+- [Changelog](https://docs.healthex.io/changelog)
+- [Support](https://support.healthex.io/kb)
+
+## Specs & discovery
+- [OAuth Authorization Server Metadata](https://api.healthex.io/.well-known/oauth-authorization-server) (RFC 8414)
+- [OAuth Protected Resource Metadata](https://api.healthex.io/.well-known/oauth-protected-resource) (RFC 9728)
+
+## Company
+- [Website](https://www.healthex.io/)
+- [About](https://www.healthex.io/about-us)
+- [Trust Center](https://trustcenter.healthex.io/)
+- [Status](https://status.healthex.io/)

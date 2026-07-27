@@ -1,0 +1,32 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.healthex.io/changelog
+scheme: numeric
+current_version: '28'
+entries:
+  - version: '28'
+    date: '2026-07-13'
+    highlights:
+      - New Patient flow progress API that supersedes the Data retrieval status API
+      - Unified calls now return consent status and retrieval data together
+      - Added support for organization API tokens
+      - Released the "Patient Nudge Guide" for re-engagement strategies
+  - version: '27'
+    date: '2026-06-03'
+    highlights:
+      - Added location status values AUTHENTICATION_EXPIRED and AUTHENTICATION_NEEDED_NEW_FACILITY
+      - Enhanced $updateData response with optional per-facility retrieval status
+  - version: '23'
+    date: '2026-02-25'
+    highlights:
+      - Introduced FHIR Server documentation for standards-based patient data access
+  - version: '22.1'
+    date: '2026-02-11'
+    highlights:
+      - Added Test Patients documentation for development
+      - Expanded MCP Server capabilities with test patient access
+  - version: '20.5'
+    date: '2025-12-12'
+    highlights:
+      - Updated Overview documentation
+      - Refreshed MCP Server documentation with latest tool definitions

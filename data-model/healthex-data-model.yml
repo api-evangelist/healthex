@@ -1,0 +1,79 @@
+generated: '2026-07-19'
+method: derived
+source: https://docs.healthex.io/
+notes: >-
+  Derived from the documented FHIR R4 resource surface and MCP tool set (no
+  OpenAPI published). Entities mirror FHIR R4 resources scoped to a consented
+  Patient, plus HealthEx's consent/project layer.
+entities:
+  - name: Patient
+    fhir: Patient / Person
+    description: The individual whose consented record is accessed via $everything.
+  - name: Condition
+    fhir: Condition
+  - name: Medication
+    fhir: MedicationStatement / MedicationRequest
+  - name: AllergyIntolerance
+    fhir: AllergyIntolerance
+  - name: Observation
+    fhir: Observation
+    description: Covers labs and vitals.
+  - name: Procedure
+    fhir: Procedure
+  - name: Immunization
+    fhir: Immunization
+  - name: Encounter
+    fhir: Encounter
+    description: Clinical visits.
+  - name: DocumentReference
+    fhir: DocumentReference
+    description: Clinical notes.
+  - name: Consent
+    description: Patient consent record gating organizational access.
+  - name: Study
+    description: Research study / project a patient is enrolled into (a.k.a. project).
+  - name: Organization
+    description: The requesting organization holding API credentials.
+relationships:
+  - from: Patient
+    to: Condition
+    type: has_many
+  - from: Patient
+    to: Medication
+    type: has_many
+  - from: Patient
+    to: AllergyIntolerance
+    type: has_many
+  - from: Patient
+    to: Observation
+    type: has_many
+    via: labs+vitals
+  - from: Patient
+    to: Procedure
+    type: has_many
+  - from: Patient
+    to: Immunization
+    type: has_many
+  - from: Patient
+    to: Encounter
+    type: has_many
+  - from: DocumentReference
+    to: Encounter
+    type: belongs_to
+    via: encounter
+  - from: Consent
+    to: Patient
+    type: belongs_to
+    via: patient
+  - from: Consent
+    to: Study
+    type: belongs_to
+    via: study
+  - from: Patient
+    to: Study
+    type: has_many
+    via: enrollment
+  - from: Study
+    to: Organization
+    type: belongs_to
+    via: organization

@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.healthex.io/
+format: fhir-operationoutcome
+docs:
+  - https://docs.healthex.io/authentication
+  - https://docs.healthex.io/fhir-server/
+envelope: >-
+  FHIR endpoints return errors as a FHIR R4 OperationOutcome resource. REST
+  admin endpoints return standard HTTP status codes.
+problems:
+  - status: 401
+    title: Unauthorized
+    description: >-
+      Returned when the Authorization bearer token is missing, malformed,
+      invalid, or expired (JWTs expire after 24 hours), or when the token does
+      not grant access to the requested patient (no consent).
+    remediation: Re-mint a token via POST /v1/auth/token or refresh the OAuth token; confirm the patient has consented.
+    source: https://docs.healthex.io/authentication
+location_status_values:
+  # Per-facility record-location statuses surfaced on $updateData / patient-flow responses
+  - AUTHENTICATION_EXPIRED
+  - AUTHENTICATION_NEEDED_NEW_FACILITY
+notes: >-
+  HealthEx does not publish an OpenAPI document, so a full 4xx/5xx catalog could
+  not be derived. Only the 401 case is explicitly documented; FHIR resource
+  errors follow the standard OperationOutcome shape.
