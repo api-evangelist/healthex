@@ -44,7 +44,7 @@ accessModel:
 image: https://framerusercontent.com/assets/91Fl8WPMZvfgNsG45g8tmHf88w.png
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-10-06'
 x-docs-platform: docusaurus
 x-docs-platform-confidence: medium
 x-docs-platform-checked: 2026-10-03
@@ -91,6 +91,8 @@ apis:
   - type: MCPServer
     url: mcp/healthex-mcp.yml
 common:
+- url: https://www.healthex.io/press
+  type: Blog
 - type: DomainSecurity
   url: security/healthex-domain-security.yml
 - type: Website
